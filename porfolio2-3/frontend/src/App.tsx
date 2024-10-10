@@ -1,37 +1,35 @@
-import React, { useState } from 'react';
-import Experiences from './components/Experiences';
-import Projects from './components/Projects';
-import { Header } from './components/Header';
-import { Contact } from './components/Contact';
-import CreateProject from './components/CreateProject';
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
-  const student = 'Halgeir Geirson';
-  const degree = 'Bachelor IT';
-  const points = 180;
-  const email = 'ahmedms@hiof.no';
-
-  const [projects, setProjects] = useState([
-    { name: 'Building a React app', category: 'Development' },
-    { name: 'Designing a website', category: 'Design' },
-    { name: 'Implementing an API', category: 'Development' },
-    { name: 'Database Management', category: 'Database' }
-  ]);  // State for prosjekter
-
-  // Funksjon for å legge til et nytt prosjekt
-  const addProject = (newProject: string, category: string) => {
-    setProjects([...projects, { name: newProject, category }]);  // Legger til det nye prosjektet
-  };
+  const [count, setCount] = useState(0)
 
   return (
-    <div>
-      <Header student={student} degree={degree} points={points} />
-      <Experiences />
-      <Projects projects={projects} />  {/* Sender prosjektene som prop til Projects */}
-      <CreateProject addProject={addProject} />  {/* Sender addProject-funksjonen som prop */}
-      <Contact email={email} />
-    </div>
-  );
+    <>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
 
-export default App;
+export default App
